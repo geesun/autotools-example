@@ -61,6 +61,11 @@ AC_PROG_CC
 
 AC_CONFIG_HEADERS([config.h])
 
+AC_CHECK_LIB(m, abs,[],[AC_MSG_ERROR([unable to find the cos() function])])
+AC_CHECK_HEADERS([pthread.h], [],[AC_MSG_ERROR([unable to find the pthread.h])])
+AC_SEARCH_LIBS([pthread_create], [pthread])
+
+
 AC_CONFIG_FILES([Makefile])
 
 AC_OUTPUT
