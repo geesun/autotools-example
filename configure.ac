@@ -28,7 +28,7 @@ dnl feature3 has depended on feature2, if feature2 was not enabled, feature3 alw
 AC_ARG_ENABLE([feature3],
               AS_HELP_STRING([--enable-feature3], [Enable feature3]),
               [
-                AS_IF([test "x$enable_feature2" = "xyes"],[], [enable_feature3="no"])
+                AS_IF([test "x$enable_feature2" != "xyes"], [enable_feature3="no"])
               ],
               [
                 enable_feature3="no"
@@ -52,6 +52,9 @@ AS_IF([test "x$with_foo" != "xno"], [
               AC_DEFINE([HAVE_FOO], [1], [With foo])
                      ])
 
+AC_ARG_ENABLE([debug],
+              AS_HELP_STRING([--enable-debug], [Enable debug feature]))
+AM_CONDITIONAL([DEBUG], [test "x$enable_debug" = "xyes"])
 
 
 AC_PROG_CC
